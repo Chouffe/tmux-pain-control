@@ -17,13 +17,9 @@ get_tmux_option() {
 
 pane_navigation_bindings() {
 	tmux bind-key h   select-pane -L
-	tmux bind-key C-h select-pane -L
 	tmux bind-key j   select-pane -D
-	tmux bind-key C-j select-pane -D
 	tmux bind-key k   select-pane -U
-	tmux bind-key C-k select-pane -U
 	tmux bind-key l   select-pane -R
-	tmux bind-key C-l select-pane -R
 }
 
 window_move_bindings() {
@@ -40,6 +36,8 @@ pane_resizing_bindings() {
 }
 
 pane_split_bindings() {
+	tmux bind-key C-l split-window -h "#{pane_current_path}"
+	tmux bind-key C-j split-window -v "#{pane_current_path}"
 	tmux bind-key "|" split-window -h -c "#{pane_current_path}"
 	tmux bind-key "-" split-window -v -c "#{pane_current_path}"
 }
